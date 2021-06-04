@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+  int sumThrees = 0;
+  int sumFives = 0;
+  int sum15s = 0;
+    
+  int i = 1, j = 1, k = 1;
+    
+  for(i; i <= 333; i++) {
+    sumThrees += 3 * i;
+  }
+
+  for(j; j <= 199; j++) {
+    sumFives += 5 * j;
+  }
+
+  for (k; k<= 66; k++) {
+    sum15s += 15 * k;
+  }
+    
+  cout << sumThrees + sumFives - sum15s;
+  return 0;
+}
