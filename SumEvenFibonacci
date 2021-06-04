@@ -1,0 +1,26 @@
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    //Find sum of EVEN fibonacci numbers below 4 million
+    int prevterm = 0;
+    int newterm = 1;
+    unsigned long int temp = 0;
+    unsigned long int sum = 0;
+    
+    while (newterm <= 4000000) {
+        temp = prevterm + newterm;
+        
+        if( (temp % 2) == 0) {
+            sum += temp;
+        }
+        
+        prevterm = newterm;
+        newterm = temp;
+    }
+    
+    cout << sum;
+    return 0;
+}
