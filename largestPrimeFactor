@@ -1,0 +1,56 @@
+/*
+The prime factors of 13195 are 5, 7, 13 and 29.
+
+What is the largest prime factor of the number 600851475143 ?
+*/
+
+#include <iostream>
+#include <math.h>
+
+using namespace std;
+
+//Check if a number is prime
+bool checkIfPrime(unsigned long int &x) {
+    int a = 3;
+    while (a < sqrt(x)) {
+        if (x % a == 0) {
+            return false;
+        }
+        a += 2;
+    }
+    return true;
+}
+
+
+int main() {
+//can skip even numbers
+
+unsigned long int num = 600851475143;
+unsigned long int max = sqrt(num);
+unsigned long int * primes;
+primes = new unsigned long int[14];
+
+unsigned int i = 3;
+int j = 0;
+
+while (i <= max) {
+    if (num % i == 0) {
+        //cout << i << " and " << num / i << endl;
+        primes[j] = num / i;
+        primes[13-j] = i;
+        j++;
+    }
+    i += 2;
+}
+//cout << max << " and " << max << endl << endl;
+
+
+for (int k = 0; k < 14; k++) {
+    
+    if(checkIfPrime(primes[k])) {
+        cout << primes[k] << " is prime!";
+        return 0;
+    }
+}
+    return 0;
+}
