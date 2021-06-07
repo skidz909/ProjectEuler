@@ -1,0 +1,124 @@
+/*
+A palindromic number reads the same both ways. The largest palindrome made from the product of two 2-digit numbers is 9009 = 91 × 99.
+
+Find the largest palindrome made from the product of two 3-digit numbers.
+*/
+
+#include <iostream>
+//Not actually needed in final solution:
+  //#include <vector>
+  //#include <algorithm>
+
+using namespace std;
+
+//bool checkPalindrome(vector<int> v);
+int checkPals(int start);
+int checkMultiple(int x);
+
+int main() {
+    //999*999 = 998,001. The first largest palimdrone is 997,799. 
+    int start = 999999; //starting higher to avoid rewriting code later
+    
+    checkPals(start);
+    
+    return 0;
+}
+
+int checkPals(int start) {
+    while(start > 100001) {
+        for (int loopcount = 1; loopcount <= 10; loopcount++) {
+            for(int i = 1; i <= 10; i++) {
+                //cout << endl << start; //prints the palimdrome list for debugging
+                int temp = checkMultiple(start);
+                if (temp > 0 && temp >99 && start/temp < 1000) {
+                    cout << "\n" << start << " has the factors " << temp << " and " << start/temp;
+                    return 1;
+                }
+                
+                if( i % 10 == 0 ) {
+                    start -= 110;
+                } else {
+                    start -= 1100;
+                }
+            }
+        }
+        start += 99;
+    }
+    start-= 2; //puts start at 99,999.
+    //Could write code that would check further down, but by now the answer has been found.
+    
+    return 0;
+}
+
+int checkMultiple(int x) {
+    int factor = 999;
+        while (factor > 100) {
+            if (x % factor == 0)
+                return factor;
+            factor--;
+        }
+    return -1;
+}
+
+
+
+    /* Try 1:
+    unsigned int pal = fact1 * fact2;
+
+    //cout << "Number: " << k << endl;
+    
+    while(pal>0) {
+        foo.push_back(pal%10);
+        pal/=10;
+    }
+    
+    if(checkPalindrome(foo))
+        cout << fact1 * fact2 << " is the answer!";
+    foo.erase(begin(foo), end(foo));
+    
+   
+    for(int a = 0; a < foo.size(); a++) {
+        cout << foo[a];
+    }
+    cout << endl;
+    for(int a = 0; a < bar.size(); a++) {
+        cout << bar[a];
+    }
+    
+    bool checkPalindrome(vector<int> v) {
+    int i = 0;
+    int lastDigit = v.size();
+    int j = lastDigit;
+    
+    for (i; i < lastDigit; i++) {
+        if (v[i] != v[j])
+            return false;
+    }
+    return true;
+}
+   */
+   
+   /* Try 2:
+   unsigned int fact1 = 999;
+    unsigned int fact2 = 999;
+    vector<int> foo;
+    
+    unsigned int answer = 0;
+    
+    while(fact1>100) {
+        fact2 = fact1;
+            while(fact2>100) {
+                unsigned int pal = fact1 * fact2;
+                while(pal>0) {
+                    foo.push_back(pal%10);
+                    pal/=10;
+                }
+                if(checkPalindrome(foo))
+                    cout << fact1 * fact2 << " is a palindrome" ; 
+                foo.erase(begin(foo), end(foo));
+                fact2--;
+            }
+        fact1--;
+    }
+   */
+   
