@@ -1,0 +1,17 @@
+/*
+Find the difference between the sum of the squares of the first one hundred natural numbers and the square of the sum.
+*/
+#include <iostream>
+
+
+
+int main() {
+    int sumOfSquares = 0;
+    for(int i= 1; i <=100; i++) {
+        int square = i * i;
+        sumOfSquares += square;
+    }
+    int squareOfSum = 101 * 50 * 101 * 50;
+    std::cout << squareOfSum - sumOfSquares;
+    return 0;
+}
