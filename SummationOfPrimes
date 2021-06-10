@@ -1,0 +1,38 @@
+/*
+The sum of the primes below 10 is 2 + 3 + 5 + 7 = 17.
+
+Find the sum of all the primes below two million
+*/
+#include <iostream>
+#include <cmath>
+
+bool checkIfPrime(unsigned long long &x);
+
+int main() {
+    
+    unsigned long long sum = 5;
+    unsigned long long currentNum = 3;
+    
+    while (currentNum < 2000000) {
+        currentNum += 2;
+        if(checkIfPrime(currentNum)) {
+            //std::cout << currentNum << ", ";
+            sum += currentNum;
+        }
+    }
+
+    std::cout << sum;
+
+    return 0;
+}
+
+bool checkIfPrime(unsigned long long &x) {
+    int a = 3;
+    while (a <= sqrt(x)) {
+        if (x % a == 0) {
+            return false;
+        }
+        a += 2;
+    }
+    return true;
+}
