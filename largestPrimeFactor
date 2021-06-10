@@ -12,7 +12,7 @@ using namespace std;
 //Check if a number is prime
 bool checkIfPrime(unsigned long int &x) {
     int a = 3;
-    while (a < sqrt(x)) {
+    while (a <= sqrt(x)) {
         if (x % a == 0) {
             return false;
         }
